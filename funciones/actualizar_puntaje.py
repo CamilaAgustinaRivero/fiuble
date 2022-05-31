@@ -7,7 +7,7 @@ Parámetros:
     usuario_ganador: nombre del usuario ganador
     usuario_perdedor: nombre del usuario perdedor
 Salida:
-    Devuelve la tabla de puntajes actualizada
+    Devuelve la tabla de puntajes actualizada y los puntos de la ronda
 """
 
 PUNTOS_NINGUN_ACIERTO_PRIMER_TURNO = -100
