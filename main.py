@@ -69,6 +69,8 @@ def main():
             else:
                 print(f"Palabra a adivinar: {PALABRA_A_ADIVINAR}")
                 intentos += 1
+        if intentos == 5:
+            usuario_1, usuario_2 = usuario_2, usuario_1
         ronda = actualizar_puntaje(intentos, tabla, usuario_1, usuario_2)
         tabla = ronda[0]
         puntos = ronda[1]
