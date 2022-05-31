@@ -1,5 +1,5 @@
 import random
-#from unidecode import unidecode
+from unidecode import unidecode
 from utiles import obtener_palabras_validas
 from utiles import obtener_color
 from funciones.cronometro import iniciar_cronometro, detener_cronometro
@@ -55,8 +55,7 @@ def main():
         while intentos <= LIMITE_INTENTOS and arriesgo != PALABRA_A_ADIVINAR:
             actualizar_coincidencias(LIMITE_INTENTOS, coincidencias_parciales, LONGITUD_PALABRA)
             if intentos < LIMITE_INTENTOS:
-                #arriesgo = unidecode(input(f"{usuario_1}, tu arriesgo: ").upper(), "utf-8")
-                arriesgo = input(f"{usuario_1}, tu arriesgo: ").upper()
+                arriesgo = unidecode(input(f"{usuario_1}, tu arriesgo: ").upper(), "utf-8")
                 arriesgo_valido = validar_arriesgo(arriesgo, LONGITUD_PALABRA, obtener_color)
                 if arriesgo_valido:
                     resultado_parcial, coincidencias = presentar(PALABRA_A_ADIVINAR, arriesgo, obtener_color, coincidencias)
@@ -80,8 +79,7 @@ def main():
         print(f"{usuario_2}, perdiste. Tenes acumulados {tabla.get(usuario_2)} puntos en total." if usuario_2 != '' else '')
 
         # Continuar jugando ?
-        #continuar = unidecode(input("¿Continuar jugando? - S/N: ").upper(), "utf-8")
-        continuar = input("¿Continuar jugando? - S/N: ").upper()
+        continuar = unidecode(input("¿Continuar jugando? - S/N: ").upper(), "utf-8")
         if continuar == "S":
             if modo_juego == "2":
                 usuario_1, usuario_2 = segundo_turno, primer_turno
