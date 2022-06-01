@@ -4,6 +4,7 @@ Función: validar_arriesgo
 Parámetros:
     arriesgo: cadena que contiene el arriesgo a validar, ingresado por el usuario.
     LONGITUD_PALABRA: número que indica la cantidad de caracteres de la palabra a adivinar.
+    obtener_color: función que obtiene los colores de utiles.py
 Salidas:
     Devuelve True si el arriesgo ingresado es válido y False si el arriesgo ingresado es inválido.
 """
