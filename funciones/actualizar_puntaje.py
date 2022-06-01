@@ -4,8 +4,8 @@ Función: actualizar_puntaje
 Parámetros:
     intentos: cantidad de intentos en la ronda
     tabla: tabla con los puntajes anteriores de los usuarios
-    usuario_ganador: nombre del usuario ganador
-    usuario_perdedor: nombre del usuario perdedor
+    usuario_actual: nombre del usuario ganador
+    usuario_segundo: nombre del otro usuario
 Salida:
     Devuelve la tabla de puntajes actualizada y los puntos de la ronda
 """
