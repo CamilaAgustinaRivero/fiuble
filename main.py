@@ -72,13 +72,11 @@ def main():
             else:
                 print(f"Palabra a adivinar: {PALABRA_A_ADIVINAR}")
                 intentos += 1
-        ronda = actualizar_puntaje(intentos, tabla, cola_turnos[0], cola_turnos[1])
-        tabla = ronda[0]
-        puntos = ronda[1]
+        tabla, puntos = actualizar_puntaje(intentos, tabla, cola_turnos[0], cola_turnos[1])
         tiempo_final = detener_cronometro(tiempo_inicio)
         resultado(arriesgo, PALABRA_A_ADIVINAR, modo_juego, tiempo_final)
         print(f"{cola_turnos[PRIMERO]}, obtuviste {puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[PRIMERO])} puntos en total.")
-        print(f"{cola_turnos[SEGUNDO]}, perdiste. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total." if modo_juego == '2' else '')
+        print(f"{cola_turnos[SEGUNDO]}, obtuviste {puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total." if modo_juego == '2' else '')
 
         # Continuar jugando ?
         continuar = unidecode(input("¿Continuar jugando? - S/N: ").upper(), "utf-8")
