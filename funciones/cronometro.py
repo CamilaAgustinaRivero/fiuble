@@ -5,7 +5,9 @@ import time
 """
 Función: iniciar_cronometro
 Parámetros:
+    No tiene parametros.
 Salidas:
+    No genera retorno.
 """
 
 
@@ -17,7 +19,7 @@ def iniciar_cronometro():
 """
 Función: detener_cronometro
 Parámetros:
-    tiempo_inicio:
+    tiempo_inicio: indica el momento en el cual inició la partida.
 Salidas:
     Devuelve una cadena con el tiempo transcurrido en minutos y segundos.
 """
