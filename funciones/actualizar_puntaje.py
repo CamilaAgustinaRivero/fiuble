@@ -14,7 +14,7 @@ PUNTOS_NINGUN_ACIERTO_PRIMER_TURNO = -100
 PUNTOS_NINGUN_ACIERTO_SEGUNDO_TURNO = -50
 
 
-def actualizar_puntaje(intentos, tabla, usuario_actual, usuario_segundo):
+def actualizar_puntaje(tabla, intentos, usuario_actual, usuario_segundo):
     puntos = -100
     if intentos <= 5:
         puntos = 60 - (intentos * 10)
