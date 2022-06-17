@@ -22,6 +22,7 @@ def main():
     while iniciar_partida:
         # Condiciones iniciales de cada partida
         PALABRA_A_ADIVINAR = random.choice(obtener_palabras_validas()).upper()
+        print(PALABRA_A_ADIVINAR)
         LONGITUD_PALABRA = len(PALABRA_A_ADIVINAR)
         intentos = 0
         arriesgo = ""
@@ -58,7 +59,8 @@ def main():
         tiempo_final = detener_cronometro(tiempo_inicio)
         resultado(arriesgo, PALABRA_A_ADIVINAR, modo_juego, tiempo_final)
         print(f"{cola_turnos[PRIMERO]}, obtuviste {puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[PRIMERO])} puntos en total.")
-        print(f"{cola_turnos[SEGUNDO]}, obtuviste {puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total." if modo_juego == '2' else '')
+        if modo_juego == '2':
+            print(f"{cola_turnos[SEGUNDO]}, obtuviste {-puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total." if puntos != -100 else f"{cola_turnos[SEGUNDO]}, obtuviste {int(puntos/2)} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total.")
 
         iniciar_partida, cola_turnos = continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida)
 
