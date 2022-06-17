@@ -20,9 +20,9 @@ def main():
 
     while iniciar_partida:
         # Condiciones iniciales de cada partida
-        PALABRA_A_ADIVINAR = random.choice(obtener_palabras_validas()).upper()
-        print(PALABRA_A_ADIVINAR)
-        LONGITUD_PALABRA = len(PALABRA_A_ADIVINAR)
+        palabra_a_adivinar = random.choice(obtener_palabras_validas()).upper()
+        print(palabra_a_adivinar)
+        LONGITUD_PALABRA = len(palabra_a_adivinar)
         intentos = 0
         arriesgo = ""
         coincidencias = []
@@ -36,28 +36,28 @@ def main():
 
         # Validación de arriesgos e intentos durante cada partida
         
-        while intentos <= LIMITE_INTENTOS and arriesgo != PALABRA_A_ADIVINAR:
+        while intentos <= LIMITE_INTENTOS and arriesgo != palabra_a_adivinar:
             actualizar_coincidencias(LIMITE_INTENTOS, coincidencias_parciales, LONGITUD_PALABRA)
             if intentos < LIMITE_INTENTOS:
                 arriesgo = unidecode(input(f"{cola_turnos[PRIMERO]}, tu arriesgo: ").upper(), "utf-8")
                 arriesgo_valido = validar_arriesgo(arriesgo, LONGITUD_PALABRA, obtener_color)
                 if arriesgo_valido:
-                    resultado_parcial, coincidencias = presentar(PALABRA_A_ADIVINAR, arriesgo, obtener_color, coincidencias)
+                    resultado_parcial, coincidencias = presentar(palabra_a_adivinar, arriesgo, obtener_color, coincidencias)
                     coincidencias_parciales.append(resultado_parcial)
                     print(f"{resultado_parcial}\n")
-                    if modo_juego == '2' and arriesgo != PALABRA_A_ADIVINAR and intentos != LIMITE_INTENTOS - 1:
+                    if modo_juego == '2' and arriesgo != palabra_a_adivinar and intentos != LIMITE_INTENTOS - 1:
                         # Cambio de turno agregando nombre del jugador actual y removiendolo del primer lugar
                         cola_turnos.append(cola_turnos[PRIMERO])
                         cola_turnos.pop(PRIMERO)
                     intentos += 1
                 print(f"Palabra a adivinar: {' '.join(coincidencias)}")
             else:
-                print(f"Palabra a adivinar: {PALABRA_A_ADIVINAR}")
+                print(f"Palabra a adivinar: {palabra_a_adivinar}")
                 intentos += 1
 
         tabla, puntos = actualizar_puntaje(tabla, intentos, cola_turnos[0], cola_turnos[1])
         tiempo_final = detener_cronometro(tiempo_inicio)
-        resultado(arriesgo, PALABRA_A_ADIVINAR, modo_juego, tiempo_final)
+        resultado(arriesgo, palabra_a_adivinar, modo_juego, tiempo_final)
         print(f"{cola_turnos[PRIMERO]}, obtuviste {puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[PRIMERO])} puntos en total.")
         if modo_juego == '2':
             print(f"{cola_turnos[SEGUNDO]}, obtuviste {-puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total." if puntos != -100 else f"{cola_turnos[SEGUNDO]}, obtuviste {int(puntos/2)} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total.")

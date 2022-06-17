@@ -3,7 +3,7 @@
 Función: resultado
 Parámetros:
     arriesgo:
-    PALABRA_A_ADIVINAR:
+    palabra_a_adivinar:
     modo_juego:
     obtener_tiempo_jugador:
 Salidas:
@@ -11,14 +11,14 @@ Salidas:
 """
 
 
-def resultado(arriesgo, PALABRA_A_ADIVINAR, modo_juego, tiempo_final):
+def resultado(arriesgo, palabra_a_adivinar, modo_juego, tiempo_final):
     if modo_juego == '1':
-        if arriesgo == PALABRA_A_ADIVINAR:
+        if arriesgo == palabra_a_adivinar:
             print(f"Ganaste! Tardaste {tiempo_final} en adivinar la palabra.")
         else:
             print("Perdiste!")
     else:
-        if arriesgo == PALABRA_A_ADIVINAR:
+        if arriesgo == palabra_a_adivinar:
             print(f"La palabra fue adivinada en {tiempo_final}.")
         else:
             print("Perdieron!")
