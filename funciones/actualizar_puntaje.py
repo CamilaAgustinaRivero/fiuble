@@ -12,11 +12,12 @@ Salida:
 
 PUNTOS_NINGUN_ACIERTO_PRIMER_TURNO = -100
 PUNTOS_NINGUN_ACIERTO_SEGUNDO_TURNO = -50
+INTENTOS_MAXIMOS = 5
 
 
 def actualizar_puntaje(tabla, intentos, usuario_actual, usuario_segundo):
-    puntos = -100
-    if intentos <= 5:
+    puntos = PUNTOS_NINGUN_ACIERTO_PRIMER_TURNO
+    if intentos <= INTENTOS_MAXIMOS:
         puntos = 60 - (intentos * 10)
     control = tabla.get(usuario_actual)
     if control is not None:
