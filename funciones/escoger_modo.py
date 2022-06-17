@@ -1,3 +1,15 @@
+# Fonzalez, Daniel
+"""
+Función: presentar
+Parámetros:
+    PALABRA_A_ADIVINAR: cadena que contiene la palabra a adivinar.
+    arriesgo: cadena que contiene un arriesgo válido ingresado por el usuario.
+    obtener_color: función que obtiene los colores de utiles.py
+    coincidencias:
+Salidas:
+    Devuelve las letras del arriesgo coloreadas con sus colores correspondientes y una lista con el arriesgo ingresado.
+"""
+
 import random
 
 def escoger_modo():
