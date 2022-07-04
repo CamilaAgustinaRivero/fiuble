@@ -11,19 +11,22 @@ from funciones.validar_arriesgo import validar_arriesgo
 from funciones.presentar import presentar
 from funciones.guardar import guardar
 from funciones.leer_archivo import leer_archivo
+from funciones.configuraciones import configuraciones
 
 
 def main():
     iniciar_partida = True
-    LIMITE_INTENTOS = 5
+    configuracion = configuraciones()
+    LIMITE_INTENTOS = configuracion["MAXIMO_INTENTOS"][0]
+    LIMITE_PARTIDAS = configuracion["MAXIMO_PARTIDAS"][0]
+    partida = 0
     tabla = {}
-    
     cola_turnos, PRIMERO, SEGUNDO, modo_juego = escoger_modo()
     
     archivo_entrada1 = open("Cuentos.txt", "r")
     archivo_entrada2 = open("La araña negra - tomo 1.txt", "r")
     archivo_entrada3 = open("Las 1000 Noches y 1 Noche.txt", "r")
-    archivo_salida = open("Salida.csv", "w")
+    archivo_salida = open("palabras.csv", "w")
     archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
     i = 0
     dic_desordenado = {}
@@ -36,11 +39,11 @@ def main():
     archivo_entrada3.close()
     archivo_salida.close()
 
-    while iniciar_partida:
+    while iniciar_partida and partida < LIMITE_PARTIDAS:
         # Condiciones iniciales de cada partida
         palabra_a_adivinar = random.choice(diccionario).upper()
         print(palabra_a_adivinar)
-        LONGITUD_PALABRA = len(palabra_a_adivinar)
+        LONGITUD_PALABRA = configuracion["LONGITUD_PALABRA_SECRETA"][0]
         intentos = 0
         arriesgo = ""
         coincidencias = []
@@ -51,9 +54,7 @@ def main():
         for incognita in range(LONGITUD_PALABRA):
             coincidencias.append("?")
         coincidencias_parciales = []
-
         # Validación de arriesgos e intentos durante cada partida
-        
         while intentos <= LIMITE_INTENTOS and arriesgo != palabra_a_adivinar:
             actualizar_coincidencias(LIMITE_INTENTOS, coincidencias_parciales, LONGITUD_PALABRA)
             if intentos < LIMITE_INTENTOS:
@@ -79,7 +80,8 @@ def main():
         print(f"{cola_turnos[PRIMERO]}, obtuviste {puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[PRIMERO])} puntos en total.")
         if modo_juego == '2':
             print(f"{cola_turnos[SEGUNDO]}, obtuviste {-puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total." if puntos != -100 else f"{cola_turnos[SEGUNDO]}, obtuviste {int(puntos/2)} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total.")
-
-        iniciar_partida, cola_turnos = continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida)
+        partida += 1
+        if partida < LIMITE_PARTIDAS:
+            iniciar_partida, cola_turnos = continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida)
 
 main()
