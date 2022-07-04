@@ -1,4 +1,4 @@
-# Fonzalez, Daniel
+# Fonzalez, Daniel y Salvador, Federico
 """
 Función: presentar
 Parámetros:
@@ -24,21 +24,22 @@ def validar_usuarios(usuario, lista_usuarios):
 
 def escoger_modo():
     orden_turnos = False
-    PRIMERO = 0
+    PRIMERO = modo_juego = 0
     SEGUNDO = 1
-    modo_juego = 0
+    INDIVIDUAL = '1'
+    MULTIJUGADOR = '2'
     cola_turnos = ['', '']
     lista_usuarios = []
 
     # No sale del ciclo hasta seleccionar un modo válido
-    while modo_juego not in ['1', '2']:
-        modo_juego = input("Introduzca 1 para jugar modo individual o 2 para modo 2 jugadores: ")
+    while modo_juego not in [INDIVIDUAL, MULTIJUGADOR]:
+        modo_juego = input("Introduzca 1 para jugar modo individual o 2 para modo multijugador (2 jugadores): ")
 
         usuario_1 = input("Usuario 1: Ingrese su nombre para empezar a jugar: ").capitalize()
         usuario_1 = validar_usuarios(usuario_1, lista_usuarios)
         cola_turnos[PRIMERO] = usuario_1
 
-        if modo_juego == '2':
+        if modo_juego == MULTIJUGADOR:
             usuario_2 = input("Usuario 2: Ingrese su nombre: ").capitalize()
             usuario_2 = validar_usuarios(usuario_2, lista_usuarios)
             # Se determina el usuario que inicia la partida
