@@ -41,7 +41,7 @@ def main():
 
     while iniciar_partida and partida < LIMITE_PARTIDAS:
         # Condiciones iniciales de cada partida
-        palabra_a_adivinar = random.choice(diccionario).upper()
+        palabra_a_adivinar = random.choice(list(diccionario)).upper()
         print(palabra_a_adivinar)
         LONGITUD_PALABRA = configuracion["LONGITUD_PALABRA_SECRETA"][0]
         intentos = 0
