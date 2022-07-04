@@ -12,7 +12,7 @@ def actualizar_datos_usuarios(usuario, clave, clave_reingreso):
         messagebox.showinfo(title=None, message="El usuario ingresado ya existe!")
     else:
         if usuario_valido and clave_valida and claves_iguales:
-            ar_datos_usuarios.write(f"{usuario},{clave}")
+            ar_datos_usuarios.write(f"{usuario},{clave}\n")
             messagebox.showinfo(title=None, message="Usuario Registrado!")
         else:
             if not usuario_valido:
