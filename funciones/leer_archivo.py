@@ -1,13 +1,13 @@
 from funciones.armar_diccionario import armar_diccionario
 
-def leer_archivo (archivo, dic_desordenado, nro):
+def leer_archivo (archivo, dic_desordenado, nro, LONGITUD_PALABRA):
     lista = []
     linea = archivo.readline()
     a = True
     while a:
         linea = linea.rstrip("\n").rstrip(",").rsplit(" ")
         for palabra in linea:
-            if palabra.isalpha() and len(palabra) == 7:
+            if palabra.isalpha() and len(palabra) == LONGITUD_PALABRA:
                 lista.append(palabra)
         linea = archivo.readline()
         if not linea:
