@@ -1,5 +1,5 @@
 import random
-from unidecode import unidecode
+from funciones.normalizar_arriesgo import normalizar_palabra
 from utiles import obtener_palabras_validas, obtener_color
 from funciones.cronometro import iniciar_cronometro, detener_cronometro
 from funciones.actualizar_puntaje import actualizar_puntaje
@@ -58,7 +58,7 @@ def main():
         while intentos <= LIMITE_INTENTOS and arriesgo != palabra_a_adivinar:
             actualizar_coincidencias(LIMITE_INTENTOS, coincidencias_parciales, LONGITUD_PALABRA)
             if intentos < LIMITE_INTENTOS:
-                arriesgo = unidecode(input(f"{cola_turnos[PRIMERO]}, tu arriesgo: ").upper(), "utf-8")
+                arriesgo = normalizar_palabra(input(f"{cola_turnos[PRIMERO]}, tu arriesgo: ").upper())
                 arriesgo_valido = validar_arriesgo(arriesgo, LONGITUD_PALABRA, obtener_color)
                 if arriesgo_valido:
                     resultado_parcial, coincidencias = presentar(palabra_a_adivinar, arriesgo, obtener_color, coincidencias)
