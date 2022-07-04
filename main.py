@@ -1,7 +1,7 @@
 import random
+from funciones.configuraciones import configuraciones
 from funciones.normalizar_arriesgo import normalizar_palabra
-from utiles import obtener_palabras_validas, obtener_color
-from funciones.cronometro import iniciar_cronometro, detener_cronometro
+from funciones.cronometro import iniciar_cronometro, detener_cronometro, tiempo_transcurrido
 from funciones.actualizar_puntaje import actualizar_puntaje
 from funciones.resultado import resultado
 from funciones.escoger_modo import escoger_modo
@@ -11,7 +11,8 @@ from funciones.validar_arriesgo import validar_arriesgo
 from funciones.presentar import presentar
 from funciones.guardar import guardar
 from funciones.leer_archivo import leer_archivo
-from funciones.configuraciones import configuraciones
+from funciones.guardar_partidas import guardar_partidas
+from utiles import obtener_color
 
 
 def main():
@@ -24,9 +25,9 @@ def main():
     tabla = {}
     cola_turnos, PRIMERO, SEGUNDO, modo_juego = escoger_modo()
     
-    archivo_entrada1 = open("Cuentos.txt", "r")
-    archivo_entrada2 = open("La araña negra - tomo 1.txt", "r")
-    archivo_entrada3 = open("Las 1000 Noches y 1 Noche.txt", "r")
+    archivo_entrada1 = open("archivos/Cuentos.txt", "r")
+    archivo_entrada2 = open("archivos/La araña negra - tomo 1.txt", "r")
+    archivo_entrada3 = open("archivos/Las 1000 Noches y 1 Noche.txt", "r")
     archivo_salida = open("palabras.csv", "w")
     archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
     i = 0
@@ -39,7 +40,6 @@ def main():
     archivo_entrada2.close()
     archivo_entrada3.close()
     archivo_salida.close()
-
     while iniciar_partida and partida < LIMITE_PARTIDAS:
         # Condiciones iniciales de cada partida
         palabra_a_adivinar = random.choice(list(diccionario)).upper()
@@ -75,11 +75,14 @@ def main():
                 intentos += 1
 
         tabla, puntos = actualizar_puntaje(tabla, intentos, cola_turnos[0], cola_turnos[1])
-        tiempo_final = detener_cronometro(tiempo_inicio)
-        resultado(arriesgo, palabra_a_adivinar, modo_juego, tiempo_final)
+        tiempo_fin = detener_cronometro()
+        tiempo = tiempo_transcurrido(tiempo_inicio, tiempo_fin)
+        resultado(arriesgo, palabra_a_adivinar, modo_juego, tiempo)
         print(f"{cola_turnos[PRIMERO]}, obtuviste {puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[PRIMERO])} puntos en total.")
+        guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[PRIMERO], "aciertos", "intentos")
         if modo_juego == '2':
             print(f"{cola_turnos[SEGUNDO]}, obtuviste {-puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total." if puntos != -100 else f"{cola_turnos[SEGUNDO]}, obtuviste {int(puntos/2)} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total.")
+            guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[SEGUNDO], "aciertos", "intentos")
         partida += 1
         if partida < LIMITE_PARTIDAS:
             iniciar_partida, cola_turnos = continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida)

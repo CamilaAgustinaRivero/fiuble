@@ -1,4 +1,17 @@
+# Nombre, Apellido
 from unidecode import unidecode
+
+"""
+Función: continuar_jugando
+Parámetros:
+    modo_juego:
+    cola_turnos:
+    tabla:
+    PRIMERO:
+    iniciar_partida:
+Salidas:
+"""
+
 
 def continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida):
     # Continuar jugando ?

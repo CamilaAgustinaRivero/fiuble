@@ -1,4 +1,15 @@
-def armar_diccionario (lista, dic_desordenado, nro):
+# Nombre, Apellido
+"""
+Función: armar_diccionario
+Parámetros:
+    lista:
+    dic_desordenado:
+    nro:
+Salidas:
+"""
+
+
+def armar_diccionario(lista, dic_desordenado, nro):
     for palabra in lista:
         palabra = palabra.casefold()
         if palabra in dic_desordenado:

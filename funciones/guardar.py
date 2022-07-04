@@ -1,3 +1,13 @@
+# Nombre, Apellido
+"""
+Función: guardar
+Parámetros:
+    diccionario:
+    archivo:
+Salidas:
+"""
+
+
 def guardar (diccionario, archivo):
     dic_ordenado = sorted (diccionario)
     for palabra in dic_ordenado:

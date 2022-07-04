@@ -1,4 +1,4 @@
-#Federico Salvador
+# Federico Salvador
 """
 Función: normalizar_palabra
 Parámetros:
@@ -6,6 +6,7 @@ Parámetros:
 Salidas:
     Devuelve la palabra ingresada sin tildes para su procesamiento en el programa.
 """
+
 
 def normalizar_palabra(arriesgo):
     resultado = ''

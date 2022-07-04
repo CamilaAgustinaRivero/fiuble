@@ -1,16 +1,14 @@
 # Fonzalez, Daniel y Salvador, Federico
+import random
+
 """
-Función: presentar
+Función: validar_usuarios
 Parámetros:
-    PALABRA_A_ADIVINAR: cadena que contiene la palabra a adivinar.
-    arriesgo: cadena que contiene un arriesgo válido ingresado por el usuario.
-    obtener_color: función que obtiene los colores de utiles.py
-    coincidencias:
+    usuario:
+    lista_usuarios:
 Salidas:
-    Devuelve las letras del arriesgo coloreadas con sus colores correspondientes y una lista con el arriesgo ingresado.
 """
 
-import random
 
 def validar_usuarios(usuario, lista_usuarios):
     lista_usuarios.append(usuario)
@@ -20,6 +18,14 @@ def validar_usuarios(usuario, lista_usuarios):
             usuario = input(f"Ingrese un nombre válido para empezar a jugar: ").capitalize()
             lista_usuarios[1] = usuario
     return usuario
+
+
+"""
+Función: escoger_modo
+Parámetros:
+    Esta función no tiene parámetros.
+Salidas:
+"""
 
 
 def escoger_modo():

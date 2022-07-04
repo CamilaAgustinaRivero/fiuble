@@ -1,10 +1,22 @@
 # Rivero, Camila Agustina
+"""
+Función:
+Parámetros:
+    Esta función no tiene parámetros.
+Salidas:
+"""
+
+
+def establecer_configuraciones():
+    pass
+
 
 """
+Función: configuraciones
 Parámetros:
-    .
+    Esta función no tiene parámetros.
 Salidas:
-    .
+    Retorna un diccionario con la configuración del juego.
 """
 
 
@@ -33,5 +45,4 @@ def configuraciones():
     for elemento in configuracion:
         print(f"{elemento}: {configuracion[elemento][0]} - {configuracion[elemento][1]}")
     print("\n")
-
     return configuracion

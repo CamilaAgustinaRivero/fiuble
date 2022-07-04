@@ -1,6 +1,18 @@
+# Nombre, Apellido
 from funciones.armar_diccionario import armar_diccionario
 
-def leer_archivo (archivo, dic_desordenado, nro, LONGITUD_PALABRA):
+"""
+Función: leer_archivo
+Parámetros:
+    archivo:
+    dic_desordenado:
+    nro:
+    LONGITUD_PALABRA:
+Salidas:
+"""
+
+
+def leer_archivo(archivo, dic_desordenado, nro, LONGITUD_PALABRA):
     lista = []
     linea = archivo.readline()
     a = True
