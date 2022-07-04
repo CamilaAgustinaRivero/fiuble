@@ -19,6 +19,7 @@ def main():
     configuracion = configuraciones()
     LIMITE_INTENTOS = configuracion["MAXIMO_INTENTOS"][0]
     LIMITE_PARTIDAS = configuracion["MAXIMO_PARTIDAS"][0]
+    LONGITUD_PALABRA = configuracion["LONGITUD_PALABRA_SECRETA"][0]
     partida = 0
     tabla = {}
     cola_turnos, PRIMERO, SEGUNDO, modo_juego = escoger_modo()
@@ -31,7 +32,7 @@ def main():
     i = 0
     dic_desordenado = {}
     for archivo in archivos:
-        diccionario = leer_archivo (archivo, dic_desordenado, i)
+        diccionario = leer_archivo (archivo, dic_desordenado, i, LONGITUD_PALABRA)
         i += 1
     guardar(diccionario, archivo_salida)
     archivo_entrada1.close()
@@ -43,7 +44,6 @@ def main():
         # Condiciones iniciales de cada partida
         palabra_a_adivinar = random.choice(list(diccionario)).upper()
         print(palabra_a_adivinar)
-        LONGITUD_PALABRA = configuracion["LONGITUD_PALABRA_SECRETA"][0]
         intentos = 0
         arriesgo = ""
         coincidencias = []
