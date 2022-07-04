@@ -9,6 +9,8 @@ from funciones.continuar_jugando import continuar_jugando
 from funciones.actualizar_coincidencias import actualizar_coincidencias
 from funciones.validar_arriesgo import validar_arriesgo
 from funciones.presentar import presentar
+from funciones.guardar import guardar
+from funciones.leer_archivo import leer_archivo
 
 
 def main():
@@ -17,10 +19,26 @@ def main():
     tabla = {}
     
     cola_turnos, PRIMERO, SEGUNDO, modo_juego = escoger_modo()
+    
+    archivo_entrada1 = open("Cuentos.txt", "r")
+    archivo_entrada2 = open("La araña negra - tomo 1.txt", "r")
+    archivo_entrada3 = open("Las 1000 Noches y 1 Noche.txt", "r")
+    archivo_salida = open("Salida.csv", "w")
+    archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
+    i = 0
+    dic_desordenado = {}
+    for archivo in archivos:
+        diccionario = leer_archivo (archivo, dic_desordenado, i)
+        i += 1
+    guardar(diccionario, archivo_salida)
+    archivo_entrada1.close()
+    archivo_entrada2.close()
+    archivo_entrada3.close()
+    archivo_salida.close()
 
     while iniciar_partida:
         # Condiciones iniciales de cada partida
-        palabra_a_adivinar = random.choice(obtener_palabras_validas()).upper()
+        palabra_a_adivinar = random.choice(diccionario).upper()
         print(palabra_a_adivinar)
         LONGITUD_PALABRA = len(palabra_a_adivinar)
         intentos = 0
