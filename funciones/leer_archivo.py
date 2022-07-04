@@ -1,4 +1,4 @@
-from armar_diccionario import armar_diccionario
+from funciones.armar_diccionario import armar_diccionario
 
 def leer_archivo (archivo, dic_desordenado, nro):
     lista = []
