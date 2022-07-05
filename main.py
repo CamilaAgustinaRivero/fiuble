@@ -25,21 +25,15 @@ def main():
     tabla = {}
     cola_turnos, PRIMERO, SEGUNDO, modo_juego = escoger_modo()
     
-    archivo_entrada1 = open("archivos/Cuentos.txt", "r")
-    archivo_entrada2 = open("archivos/La araña negra - tomo 1.txt", "r")
-    archivo_entrada3 = open("archivos/Las 1000 Noches y 1 Noche.txt", "r")
-    archivo_salida = open("palabras.csv", "w")
-    archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
-    i = 0
-    dic_desordenado = {}
-    for archivo in archivos:
-        diccionario = leer_archivo (archivo, dic_desordenado, i, LONGITUD_PALABRA)
-        i += 1
-    guardar(diccionario, archivo_salida)
-    archivo_entrada1.close()
-    archivo_entrada2.close()
-    archivo_entrada3.close()
-    archivo_salida.close()
+    with open("Cuentos.txt", "r") as archivo_entrada1, open("La araña negra - tomo 1.txt", "r") as archivo_entrada2, open(
+        "Las 1000 Noches y 1 Noche.txt", "r") as archivo_entrada3, open("palabras.csv", "w") as archivo_salida:
+        archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
+        i = 0
+        dic_desordenado = {}
+        for archivo in archivos:
+            diccionario = leer_archivo (archivo, dic_desordenado, i, LONGITUD_PALABRA)
+            i += 1
+        guardar(diccionario, archivo_salida)
     while iniciar_partida and partida < LIMITE_PARTIDAS:
         # Condiciones iniciales de cada partida
         palabra_a_adivinar = random.choice(list(diccionario)).upper()
