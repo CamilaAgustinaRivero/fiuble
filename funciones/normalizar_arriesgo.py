@@ -8,23 +8,25 @@ Salidas:
     para su procesamiento en el programa.
 """
 
+
 def normalizar_palabra(arriesgo):
     if arriesgo.isalpha() and not arriesgo.isascii():
         resultado = ''
-        vocales_tildadas = ['Á','É','Í','Ó','Ú']
-
+        vocales_tildadas = ['Á', 'É', 'Í', 'Ó', 'Ú']
         for caracter in arriesgo:
             if caracter in vocales_tildadas:
                 if caracter == 'Á':
-                    resultado+='A'
+                    resultado += 'A'
                 elif caracter == 'É':
-                    resultado+='E'
+                    resultado += 'E'
                 elif caracter == 'Í':
-                    resultado+='I'
+                    resultado += 'I'
                 elif caracter == 'Ó':
-                    resultado+='O'
-                else: resultado+='U'
-            else: resultado += caracter
+                    resultado += 'O'
+                else:
+                    resultado += 'U'
+            else:
+                resultado += caracter
 
         arriesgo = resultado
 

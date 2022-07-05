@@ -67,7 +67,7 @@ def configuraciones():
         archivo.close()
     except FileNotFoundError:
         print(f"Error al procesar archivo de configuración.")
-    
+
     for elemento in configuracion:
         print(f"{elemento}: {configuracion[elemento][0]} - {configuracion[elemento][1]}")
     print("\n")

@@ -2,9 +2,10 @@ from cargar_datos import cargar_datos_usuarios
 from validaciones_interfaz import validar_clave, validar_usuario
 from tkinter import messagebox
 
+
 def actualizar_datos_usuarios(usuario, clave, clave_reingreso):
     dict_datos = cargar_datos_usuarios()
-    ar_datos_usuarios = open("datos_usuarios.csv", "a") 
+    ar_datos_usuarios = open("datos_usuarios.csv", "a")
     usuario_valido = validar_usuario(usuario)
     claves_iguales = clave == clave_reingreso
     clave_valida = validar_clave(clave)
@@ -22,5 +23,5 @@ def actualizar_datos_usuarios(usuario, clave, clave_reingreso):
             elif usuario_valido and not clave_valida:
                 messagebox.showerror(title=None, message="La clave ingresada no es valida")
             else:
-                messagebox.showerror(title=None, message="Alguno de los datos ingresados es incorrecto") 
+                messagebox.showerror(title=None, message="Alguno de los datos ingresados es incorrecto")
     ar_datos_usuarios.close()

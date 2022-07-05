@@ -1,11 +1,12 @@
-import sys
-sys.path.append("..")
 from tkinter import messagebox
 from cargar_datos import cargar_datos_usuarios
+import sys
+sys.path.append("..")
 from main import main
 
+
 def validar_clave(clave):
-    letras_con_acentos = ["á","é","í","ó","ú"]
+    letras_con_acentos = ["á", "é", "í", "ó", "ú"]
     tiene_acento = tiene_mayus = tiene_minus = tiene_num = caracter_especial = caracter_dif = False
     for caracter in clave:
         if caracter in letras_con_acentos:
@@ -20,8 +21,10 @@ def validar_clave(clave):
             caracter_especial = True
         else:
             caracter_dif = True
-    clave_valida = 8 <= len(clave) <= 15 and tiene_num and tiene_mayus and tiene_minus and not tiene_acento and caracter_especial and not caracter_dif
+    clave_valida = 8 <= len(
+        clave) <= 15 and tiene_num and tiene_mayus and tiene_minus and not tiene_acento and caracter_especial and not caracter_dif
     return clave_valida
+
 
 def validar_usuario(usuario):
     caracteres_alpha = [caracter.isalpha() for caracter in usuario]
@@ -33,8 +36,10 @@ def validar_usuario(usuario):
         else:
             print(caracter, "invalido")
             caracter_invalido = True
-    usuario_valido =  4 <= len(usuario) <= 15 and any(caracteres_alpha) and any(caracteres_num) and ("_" in usuario) and not caracter_invalido
+    usuario_valido = 4 <= len(usuario) <= 15 and any(caracteres_alpha) and any(caracteres_num) and (
+            "_" in usuario) and not caracter_invalido
     return usuario_valido
+
 
 def verificar_ingreso_clave(usuario1, clave1, modo_juego, usuario2='', clave2=''):
     claves = cargar_datos_usuarios()
@@ -53,6 +58,7 @@ def verificar_ingreso_clave(usuario1, clave1, modo_juego, usuario2='', clave2=''
                 messagebox.showinfo(title=None, message="Usuarios y Claves Correctos (correr main fiuble)")
                 main(str(modo_juego), usuario1, usuario2)
             else:
-                messagebox.showerror(title=None, message="Algunos de los datos ingresados es Incorrecto (clave incorrecta)")
+                messagebox.showerror(title=None,
+                                     message="Algunos de los datos ingresados es Incorrecto (clave incorrecta)")
         else:
             messagebox.showerror(title=None, message="Alguno de los usuarios no se encuentra registrado")

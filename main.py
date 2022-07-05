@@ -78,5 +78,3 @@ def main(modo_juego, usuario_1, usuario_2=""):
     guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[PRIMERO], aciertos_totales1, intentos_totales1)
     if modo_juego == '2':
         guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[SEGUNDO], aciertos_totales2, intentos_totales2)
-
-#main()
