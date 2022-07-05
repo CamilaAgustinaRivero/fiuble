@@ -1,7 +1,7 @@
 from tkinter import *
 from interfaz_login import ventana_login
 
-def elegir_modo():
+def main_interfaz():
     raiz = Tk()
     raiz.title("Fiuble")
     raiz.resizable(False, False)
@@ -24,4 +24,4 @@ def elegir_modo():
 
     raiz.mainloop()
 
-elegir_modo()
+main_interfaz()

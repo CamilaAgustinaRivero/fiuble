@@ -1,6 +1,6 @@
 
 def cargar_datos_usuarios():
-    datos_usuarios = open("interfaz_grafica\datos_usuarios.csv", "r")
+    datos_usuarios = open("datos_usuarios.csv", "r")
     linea = datos_usuarios.readline()
     usuario, clave = linea.rstrip("\n").split(",") if linea else ('', '')
     dict_datos = {}
