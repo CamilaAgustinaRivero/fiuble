@@ -20,7 +20,7 @@ def main_interfaz():
     opcion_2 = Radiobutton(marco, text="2 jugadores", padx=20, variable=modo_de_juego, value=2, bg="green")
     opcion_2.grid(row=1, column=0)
 
-    boton_continuar = Button(marco, text="Jugar Fiuble", command=lambda: ventana_login(modo_de_juego.get()))
+    boton_continuar = Button(marco, text="Jugar Fiuble", command=lambda: ventana_login(modo_de_juego.get(), raiz))
     boton_continuar.grid(row=2, column=0, padx=10, pady=10)
 
     raiz.mainloop()

@@ -41,12 +41,13 @@ def validar_usuario(usuario):
     return usuario_valido
 
 
-def verificar_ingreso_clave(usuario1, clave1, modo_juego, usuario2='', clave2=''):
+def verificar_ingreso_clave(usuario1, clave1, modo_juego, raiz_main, raiz_login, usuario2='', clave2=''):
     claves = cargar_datos_usuarios()
     if modo_juego == 1:
         if usuario1 in claves.keys():
             if claves[usuario1] == clave1:
                 messagebox.showinfo(title=None, message="Usuario y Clave Correctos (correr main fiuble)")
+                raiz_main.destroy(); raiz_login.destroy()
                 main(str(modo_juego), usuario1)
             else:
                 messagebox.showerror(title=None, message="Algunos de los datos ingresados es Incorrecto")
@@ -56,6 +57,7 @@ def verificar_ingreso_clave(usuario1, clave1, modo_juego, usuario2='', clave2=''
         if usuario1 and usuario2 in claves.keys():
             if claves[usuario1] == clave1 and claves[usuario2] == clave2:
                 messagebox.showinfo(title=None, message="Usuarios y Claves Correctos (correr main fiuble)")
+                raiz_main.destroy(); raiz_login.destroy()
                 main(str(modo_juego), usuario1, usuario2)
             else:
                 messagebox.showerror(title=None,

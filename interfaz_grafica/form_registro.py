@@ -38,7 +38,7 @@ def form_registro():
 
     botonEnvio = Button(marco, text="Enviar Formulario",
                         command=lambda: actualizar_datos_usuarios(entry_user.get(), entry_pw.get(),
-                                                                  entry_reingreso.get()))
+                                                                  entry_reingreso.get(), raiz))
     botonEnvio.grid(row=3, column=1, padx=10, pady=10)
 
     raiz.mainloop()

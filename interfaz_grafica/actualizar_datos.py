@@ -3,7 +3,7 @@ from validaciones_interfaz import validar_clave, validar_usuario
 from tkinter import messagebox
 
 
-def actualizar_datos_usuarios(usuario, clave, clave_reingreso):
+def actualizar_datos_usuarios(usuario, clave, clave_reingreso, raiz_registro):
     dict_datos = cargar_datos_usuarios()
     ar_datos_usuarios = open("datos_usuarios.csv", "a")
     usuario_valido = validar_usuario(usuario)
@@ -15,6 +15,7 @@ def actualizar_datos_usuarios(usuario, clave, clave_reingreso):
         if usuario_valido and clave_valida and claves_iguales:
             ar_datos_usuarios.write(f"{usuario},{clave}\n")
             messagebox.showinfo(title=None, message="Usuario Registrado!")
+            raiz_registro.destroy()
         else:
             if not usuario_valido:
                 messagebox.showerror(title=None, message="Nombre de usuario incorrecto")

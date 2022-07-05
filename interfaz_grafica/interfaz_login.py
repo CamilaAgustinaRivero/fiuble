@@ -18,7 +18,7 @@ def casilla_usuario_y_clave(numero_usuario, fila, marco):
     return entry_user, entry_pw
 
 
-def ventana_login(modo_de_juego):
+def ventana_login(modo_de_juego, raiz_main):
     raiz = Tk()
     raiz.title("Login Sortija")
     raiz.resizable(False, False)
@@ -34,11 +34,12 @@ def ventana_login(modo_de_juego):
         entry_user2, entry_pw2 = casilla_usuario_y_clave(2, 2, marco)
         botonEnvio = Button(marco, text="Entrar",
                             command=lambda: verificar_ingreso_clave(entry_user1.get(), entry_pw1.get(), modo_de_juego,
-                                                                    entry_user2.get(), entry_pw2.get()))
+                                                                    raiz, raiz_main, entry_user2.get(), entry_pw2.get()))
     else:
         entry_user1, entry_pw1 = casilla_usuario_y_clave(1, 0, marco)
         botonEnvio = Button(marco, text="Entrar",
-                            command=lambda: verificar_ingreso_clave(entry_user1.get(), entry_pw1.get(), modo_de_juego))
+                            command=lambda: verificar_ingreso_clave(entry_user1.get(), entry_pw1.get(), modo_de_juego,
+                                                                    raiz, raiz_main))
 
     # Boton enviar formulario
     botonEnvio.grid(row=5, column=1, padx=10, pady=10)
