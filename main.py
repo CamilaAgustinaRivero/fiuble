@@ -1,6 +1,6 @@
 import random
 from utiles import obtener_color
-from funciones.configuraciones import configuraciones
+from funciones.configuraciones import establecer_configuraciones, configuraciones
 from funciones.escoger_modo import escoger_modo
 from funciones.leer_archivo import unificar_archivos
 from funciones.cronometro import iniciar_cronometro, detener_cronometro, tiempo_transcurrido
@@ -17,6 +17,7 @@ from funciones.guardar_partidas import guardar_partidas
 def main():
     # Condiciones iniciales del juego
     iniciar_partida = True
+    establecer_configuraciones()
     configuracion = configuraciones()
     LIMITE_PARTIDAS = configuracion["MAXIMO_PARTIDAS"][0]
     LIMITE_INTENTOS = configuracion["MAXIMO_INTENTOS"][0]
