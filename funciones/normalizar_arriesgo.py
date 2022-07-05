@@ -9,7 +9,7 @@ Salidas:
 """
 
 def normalizar_palabra(arriesgo):
-    if not arriesgo.isascii():
+    if arriesgo.isalpha() and not arriesgo.isascii():
         resultado = ''
         vocales_tildadas = ['Á','É','Í','Ó','Ú']
 
