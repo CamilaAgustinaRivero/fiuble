@@ -1,5 +1,5 @@
 # Nombre, Apellido
-from unidecode import unidecode
+#from unidecode import unidecode
 
 """
 Función: continuar_jugando
@@ -15,7 +15,8 @@ Salidas:
 
 def continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida):
     # Continuar jugando ?
-    continuar = unidecode(input("¿Desea jugar otra partida? (S/N): ").upper(), "utf-8")
+    #continuar = unidecode(input("¿Desea jugar otra partida? (S/N): ").upper(), "utf-8")
+    continuar = input("¿Desea jugar otra partida? (S/N): ").upper()
     if continuar == "S":
         if modo_juego == '2':
                 cola_turnos.append(cola_turnos[PRIMERO])

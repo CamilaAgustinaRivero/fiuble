@@ -1,15 +1,16 @@
-# Nombre, Apellido
+# Ditrani, Elías Nicolás
 from funciones.armar_diccionario import armar_diccionario
 from funciones.guardar import guardar
 
 """
 Función: leer_archivo
-Parámetros:
-    archivo:
-    dic_desordenado:
-    nro:
-    LONGITUD_PALABRA:
+Parámetros: 
+    archivo: un archivo de texto para leer
+    dic_desordenado: un diccionario en el que se guardarán las palabras candidatas
+    nro: numero de archivo que se esta leyendo
+    LONGITUD_PALABRA: longitud de la palabra candidata
 Salidas:
+    diccionario: un diccionario con las palabras candidatas
 """
 
 
@@ -32,9 +33,9 @@ def leer_archivo(archivo, dic_desordenado, nro, LONGITUD_PALABRA):
 """
 Función: unificar_archivos
 Parámetros:
-    LONGITUD_PALABRA:
+    LONGITUD_PALABRA: logitud de la palabra candidata
 Salidas:
-    diccionario:
+    diccionario: diccionario con las palabras candidatas
 """
 
 def unificar_archivos(LONGITUD_PALABRA):

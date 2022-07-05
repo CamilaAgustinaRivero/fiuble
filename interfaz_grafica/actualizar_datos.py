@@ -4,7 +4,7 @@ from tkinter import messagebox
 
 def actualizar_datos_usuarios(usuario, clave, clave_reingreso):
     dict_datos = cargar_datos_usuarios()
-    ar_datos_usuarios = open("interfaz_grafica\datos_usuarios.csv", "a") 
+    ar_datos_usuarios = open("datos_usuarios.csv", "a") 
     usuario_valido = validar_usuario(usuario)
     claves_iguales = clave == clave_reingreso
     clave_valida = validar_clave(clave)
