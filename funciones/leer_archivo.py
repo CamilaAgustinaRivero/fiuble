@@ -19,7 +19,7 @@ def leer_archivo(archivo, dic_desordenado, nro, LONGITUD_PALABRA):
     while a:
         linea = linea.rstrip("\n").rstrip(",").rsplit(" ")
         for palabra in linea:
-            if palabra.isalpha() and len(palabra) == LONGITUD_PALABRA:
+            if palabra.isalpha() and palabra.isascii() and len(palabra) == LONGITUD_PALABRA:
                 lista.append(palabra)
         linea = archivo.readline()
         if not linea:
