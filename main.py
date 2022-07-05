@@ -16,17 +16,20 @@ from utiles import obtener_color
 
 
 def main():
+    # Condiciones iniciales del juego
     iniciar_partida = True
     configuracion = configuraciones()
-    LIMITE_INTENTOS = configuracion["MAXIMO_INTENTOS"][0]
     LIMITE_PARTIDAS = configuracion["MAXIMO_PARTIDAS"][0]
+    LIMITE_INTENTOS = configuracion["MAXIMO_INTENTOS"][0]
     LONGITUD_PALABRA = configuracion["LONGITUD_PALABRA_SECRETA"][0]
     partida = 0
     tabla = {}
     cola_turnos, PRIMERO, SEGUNDO, modo_juego = escoger_modo()
+    aciertos_totales1 = aciertos_totales2 = 0
+    intentos_totales1 = intentos_totales2 = 0
     
-    with open("Cuentos.txt", "r") as archivo_entrada1, open("La araña negra - tomo 1.txt", "r") as archivo_entrada2, open(
-        "Las 1000 Noches y 1 Noche.txt", "r") as archivo_entrada3, open("palabras.csv", "w") as archivo_salida:
+    with open("archivos/Cuentos.txt", "r") as archivo_entrada1, open("archivos/La araña negra - tomo 1.txt", "r") as archivo_entrada2, open(
+        "archivos/Las 1000 Noches y 1 Noche.txt", "r") as archivo_entrada3, open("palabras.csv", "w") as archivo_salida:
         archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
         i = 0
         dic_desordenado = {}
@@ -34,6 +37,7 @@ def main():
             diccionario = leer_archivo (archivo, dic_desordenado, i, LONGITUD_PALABRA)
             i += 1
         guardar(diccionario, archivo_salida)
+    
     while iniciar_partida and partida < LIMITE_PARTIDAS:
         # Condiciones iniciales de cada partida
         palabra_a_adivinar = random.choice(list(diccionario)).upper()
@@ -41,13 +45,13 @@ def main():
         intentos = 0
         arriesgo = ""
         coincidencias = []
-
         tiempo_inicio = iniciar_cronometro()
 
         # La lista coincidencias tiene una longitud dinámica
         for incognita in range(LONGITUD_PALABRA):
             coincidencias.append("?")
         coincidencias_parciales = []
+
         # Validación de arriesgos e intentos durante cada partida
         while intentos <= LIMITE_INTENTOS and arriesgo != palabra_a_adivinar:
             actualizar_coincidencias(LIMITE_INTENTOS, coincidencias_parciales, LONGITUD_PALABRA)
@@ -73,12 +77,15 @@ def main():
         tiempo = tiempo_transcurrido(tiempo_inicio, tiempo_fin)
         resultado(arriesgo, palabra_a_adivinar, modo_juego, tiempo)
         print(f"{cola_turnos[PRIMERO]}, obtuviste {puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[PRIMERO])} puntos en total.")
-        guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[PRIMERO], "aciertos", "intentos")
         if modo_juego == '2':
             print(f"{cola_turnos[SEGUNDO]}, obtuviste {-puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total." if puntos != -100 else f"{cola_turnos[SEGUNDO]}, obtuviste {int(puntos/2)} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total.")
-            guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[SEGUNDO], "aciertos", "intentos")
         partida += 1
         if partida < LIMITE_PARTIDAS:
             iniciar_partida, cola_turnos = continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida)
+    
+    # Cuando se termina de jugar todas las partidas
+    guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[PRIMERO], aciertos_totales1, intentos_totales1)
+    if modo_juego == '2':
+        guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[SEGUNDO], aciertos_totales2, intentos_totales2)
 
 main()
