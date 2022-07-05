@@ -10,36 +10,28 @@ Salidas:
 def establecer_configuraciones():
     mensaje = "Opción incorrecta."
     archivo = open("./configuracion.csv", "w")
-    LONGITUD_PALABRA_SECRETA = input("Ingrese la longitud de la palabra: ")
-    if LONGITUD_PALABRA_SECRETA.isdecimal():
-        linea = "{},{}\n".format('LONGITUD_PALABRA_SECRETA', LONGITUD_PALABRA_SECRETA)
+    longitud_palabra_secreta = input("Ingrese la longitud de la palabra (entre 3 y 18 caracteres): ")
+    if longitud_palabra_secreta.isdecimal() and 3 <= int(longitud_palabra_secreta) <= 18:
+        linea = "{},{}\n".format('LONGITUD_PALABRA_SECRETA', longitud_palabra_secreta)
         archivo.write(linea)
     else:
         print(mensaje)
 
-    MAXIMO_PARTIDAS = input("Ingrese el máximo de partidas permitidas: ")
-    if MAXIMO_PARTIDAS.isdecimal():
-        linea = "{},{}\n".format('MAXIMO_PARTIDAS', MAXIMO_PARTIDAS)
+    maximo_partidas = input("Ingrese el máximo de partidas permitidas: ")
+    if maximo_partidas.isdecimal() and int(maximo_partidas) >= 1:
+        linea = "{},{}\n".format('MAXIMO_PARTIDAS', maximo_partidas)
         archivo.write(linea)
     else:
         print(mensaje)
 
-    MAXIMO_INTENTOS = input("Ingrese el máximo de intentos permitidos: ")
-    if MAXIMO_INTENTOS.isdecimal():
-        linea = "{},{}\n".format('MAXIMO_INTENTOS', MAXIMO_INTENTOS)
+    reiniciar_archivo_partidas = input("¿Reiniciar el archivo de partidas? - S/N: ").upper()
+    if reiniciar_archivo_partidas == "S":
+        reiniciar_archivo_partidas = True
+        linea = "{},{}\n".format('REINICIAR_ARCHIVO_PARTIDAS', reiniciar_archivo_partidas)
         archivo.write(linea)
-    else:
-        print(mensaje)
-
-    REINICIAR_ARCHIVO_PARTIDAS = input("¿Reiniciar el archivo de partidas? - S/N: ").upper()
-    if REINICIAR_ARCHIVO_PARTIDAS == "S":
-        REINICIAR_ARCHIVO_PARTIDAS = True
-        linea = "{},{}\n".format('REINICIAR_ARCHIVO_PARTIDAS', REINICIAR_ARCHIVO_PARTIDAS)
-        archivo.write(linea)
-        # borrar partidas guardadas
-    elif REINICIAR_ARCHIVO_PARTIDAS == "N":
-        REINICIAR_ARCHIVO_PARTIDAS = False
-        linea = "{},{}\n".format('REINICIAR_ARCHIVO_PARTIDAS', REINICIAR_ARCHIVO_PARTIDAS)
+    elif reiniciar_archivo_partidas == "N":
+        reiniciar_archivo_partidas = False
+        linea = "{},{}\n".format('REINICIAR_ARCHIVO_PARTIDAS', reiniciar_archivo_partidas)
         archivo.write(linea)
     else:
         print(mensaje)
@@ -60,7 +52,6 @@ def configuraciones():
     configuracion = {
         "LONGITUD_PALABRA_SECRETA": (5, tipo_configuracion),
         "MAXIMO_PARTIDAS": (5, tipo_configuracion),
-        "MAXIMO_INTENTOS": (5, tipo_configuracion),
         "REINICIAR_ARCHIVO_PARTIDAS": (False, tipo_configuracion)
     }
     try:

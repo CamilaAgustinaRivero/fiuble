@@ -19,9 +19,9 @@ def main():
     iniciar_partida = True
     establecer_configuraciones()
     configuracion = configuraciones()
-    LIMITE_PARTIDAS = configuracion["MAXIMO_PARTIDAS"][0]
-    LIMITE_INTENTOS = configuracion["MAXIMO_INTENTOS"][0]
     LONGITUD_PALABRA = configuracion["LONGITUD_PALABRA_SECRETA"][0]
+    LIMITE_PARTIDAS = configuracion["MAXIMO_PARTIDAS"][0]
+    LIMITE_INTENTOS = 5
     partida = 0
     tabla = {}
     cola_turnos, PRIMERO, SEGUNDO, modo_juego = escoger_modo()
