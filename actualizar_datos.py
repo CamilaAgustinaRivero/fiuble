@@ -1,5 +1,5 @@
 from cargar_datos import cargar_datos_usuarios
-from validar import validar_clave, validar_usuario
+from validaciones_interfaz import validar_clave, validar_usuario
 from tkinter import messagebox
 
 def actualizar_datos_usuarios(usuario, clave, clave_reingreso):

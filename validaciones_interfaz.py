@@ -1,5 +1,7 @@
 from tkinter import messagebox
 from cargar_datos import cargar_datos_usuarios
+#importar archivo main para correr luego de validar usuarios
+#rom logica_principal.main import main
 
 def validar_clave(clave):
     letras_con_acentos = ["á","é","í","ó","ú"]
@@ -15,7 +17,7 @@ def validar_clave(clave):
             tiene_num = True
         elif caracter in ["_", "-"]:
             caracter_especial = True
-        elif not caracter.isalpha or not caracter.isdigit():
+        else:
             caracter_dif = True
     clave_valida = 8 <= len(clave) <= 15 and tiene_num and tiene_mayus and tiene_minus and not tiene_acento and caracter_especial and not caracter_dif
     return clave_valida
@@ -33,12 +35,25 @@ def validar_usuario(usuario):
     usuario_valido =  4 <= len(usuario) <= 15 and any(caracteres_alpha) and any(caracteres_num) and ("_" in usuario) and not caracter_invalido
     return usuario_valido
 
-def verificar_ingreso_clave(nombre_usuario, clave_usuario):
+def verificar_ingreso_clave(usuario1, clave1, modo_juego, usuario2='', clave2=''):
     claves = cargar_datos_usuarios()
-    if nombre_usuario in claves.keys():
-        if claves[nombre_usuario] == clave_usuario:
-            messagebox.showinfo(title=None, message="Usuario y Clave Correctos (Empezar juego?)")
+    if modo_juego == 1:
+        if usuario1 in claves.keys():
+            if claves[usuario1] == clave1:
+                messagebox.showinfo(title=None, message="Usuario y Clave Correctos (correr main fiuble)")
+                #Aqui debería de llamar al main() para correrlo
+                #main.main(modo_juego, usuario1)
+            else:
+                messagebox.showerror(title=None, message="Algunos de los datos ingresados es Incorrecto")
         else:
-            messagebox.showerror(title=None, message="Alguno de los datos ingresados es Incorrecto")
+            messagebox.showerror(title=None, message="Usuario no registrado")
     else:
-        messagebox.showerror(title=None, message="Algunos de los datos ingresados es Incorrecto")
+        if usuario1 and usuario2 in claves.keys():
+            if claves[usuario1] == clave1 and claves[usuario2] == clave2:
+                messagebox.showinfo(title=None, message="Usuarios y Claves Correctos (correr main fiuble)")
+                # Aqui deberia de llamar al main para correrlo
+                # main.main(modo_juego, usuario1, usuario2)
+            else:
+                messagebox.showerror(title=None, message="Algunos de los datos ingresados es Incorrecto (clave incorrecta)")
+        else:
+            messagebox.showerror(title=None, message="Alguno de los usuarios no se encuentra registrado")
