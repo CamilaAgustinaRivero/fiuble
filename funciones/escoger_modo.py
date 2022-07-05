@@ -13,7 +13,7 @@ def escoger_modo(modo_juego, usuario_1, usuario_2):
     SEGUNDO = 1
     cola_turnos = ['', '']        
 
-    if modo_juego == 2:
+    if modo_juego == '2':
         # Se determina el usuario que inicia la partida
         if not orden_turnos:
                 cola_turnos[PRIMERO] = random.choice((usuario_1, usuario_2))
