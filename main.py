@@ -1,18 +1,17 @@
 import random
+from utiles import obtener_color
 from funciones.configuraciones import configuraciones
-from funciones.normalizar_arriesgo import normalizar_palabra
-from funciones.cronometro import iniciar_cronometro, detener_cronometro, tiempo_transcurrido
-from funciones.actualizar_puntaje import actualizar_puntaje
-from funciones.resultado import resultado
 from funciones.escoger_modo import escoger_modo
-from funciones.continuar_jugando import continuar_jugando
+from funciones.leer_archivo import unificar_archivos
+from funciones.cronometro import iniciar_cronometro, detener_cronometro, tiempo_transcurrido
 from funciones.actualizar_coincidencias import actualizar_coincidencias
+from funciones.normalizar_arriesgo import normalizar_palabra
 from funciones.validar_arriesgo import validar_arriesgo
 from funciones.presentar import presentar
-from funciones.guardar import guardar
-from funciones.leer_archivo import leer_archivo
+from funciones.actualizar_puntaje import actualizar_puntaje
+from funciones.resultado import resultado
+from funciones.continuar_jugando import continuar_jugando
 from funciones.guardar_partidas import guardar_partidas
-from utiles import obtener_color
 
 
 def main():
@@ -27,16 +26,7 @@ def main():
     cola_turnos, PRIMERO, SEGUNDO, modo_juego = escoger_modo()
     aciertos_totales1 = aciertos_totales2 = 0
     intentos_totales1 = intentos_totales2 = 0
-    
-    with open("archivos/Cuentos.txt", "r") as archivo_entrada1, open("archivos/La araña negra - tomo 1.txt", "r") as archivo_entrada2, open(
-        "archivos/Las 1000 Noches y 1 Noche.txt", "r") as archivo_entrada3, open("palabras.csv", "w") as archivo_salida:
-        archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
-        i = 0
-        dic_desordenado = {}
-        for archivo in archivos:
-            diccionario = leer_archivo (archivo, dic_desordenado, i, LONGITUD_PALABRA)
-            i += 1
-        guardar(diccionario, archivo_salida)
+    diccionario = unificar_archivos(LONGITUD_PALABRA)
     
     while iniciar_partida and partida < LIMITE_PARTIDAS:
         # Condiciones iniciales de cada partida

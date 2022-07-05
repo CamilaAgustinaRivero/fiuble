@@ -1,5 +1,6 @@
 # Nombre, Apellido
 from funciones.armar_diccionario import armar_diccionario
+from funciones.guardar import guardar
 
 """
 Función: leer_archivo
@@ -27,22 +28,22 @@ def leer_archivo(archivo, dic_desordenado, nro, LONGITUD_PALABRA):
     diccionario = armar_diccionario(lista, dic_desordenado, nro)
     return diccionario
 
-"""
-PARA IMPLEMENTAR EN EL MAIN
 
-archivo_entrada1 = open("Cuentos.txt", "r")
-archivo_entrada2 = open("La araña negra - tomo 1.txt", "r")
-archivo_entrada3 = open("Las 1000 Noches y 1 Noche.txt", "r")
-archivo_salida = open("Salida.csv", "w")
-archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
-i = 0
-dic_desordenado = {}
-for archivo in archivos:
-    diccionario = leer_archivo (archivo, dic_desordenado, i)
-    i += 1
-guardar(diccionario, archivo_salida)
-archivo_entrada1.close()
-archivo_entrada2.close()
-archivo_entrada3.close()
-archivo_salida.close()
 """
+Función: unificar_archivos
+Parámetros:
+    LONGITUD_PALABRA:
+Salidas:
+    diccionario:
+"""
+
+def unificar_archivos(LONGITUD_PALABRA):
+    with open("archivos/Cuentos.txt", "r") as archivo_entrada1, open("archivos/La araña negra - tomo 1.txt", "r") as archivo_entrada2, open("archivos/Las 1000 Noches y 1 Noche.txt", "r") as archivo_entrada3, open("palabras.csv", "w") as archivo_salida:
+        archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
+        i = 0
+        dic_desordenado = {}
+        for archivo in archivos:
+            diccionario = leer_archivo(archivo, dic_desordenado, i, LONGITUD_PALABRA)
+            i += 1
+        guardar(diccionario, archivo_salida)
+    return diccionario
