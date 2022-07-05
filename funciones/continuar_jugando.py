@@ -1,5 +1,4 @@
 # Nombre, Apellido
-#from unidecode import unidecode
 
 """
 Función: continuar_jugando
@@ -15,13 +14,14 @@ Salidas:
 
 def continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida):
     # Continuar jugando ?
-    #continuar = unidecode(input("¿Desea jugar otra partida? (S/N): ").upper(), "utf-8")
-    continuar = input("¿Desea jugar otra partida? (S/N): ").upper()
+    continuar = ''
+    while continuar not in ['S','N']:
+        continuar = input("¿Desea jugar otra partida? (S/N): ").upper()
     if continuar == "S":
         if modo_juego == '2':
                 cola_turnos.append(cola_turnos[PRIMERO])
                 cola_turnos.pop(PRIMERO)
-    elif continuar == "N":
+    else:
         iniciar_partida = False
         if modo_juego == '2':
             ganador = sorted(tabla.items(), key=lambda x: x[1], reverse = True)
@@ -29,6 +29,4 @@ def continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida):
                 print("Empate!")
             else:
                 print(f"El ganador es {ganador[0][0]}, con un total de {ganador[0][1]} puntos.")
-    else:
-        print("Opción incorrecta.")
     return iniciar_partida, cola_turnos
