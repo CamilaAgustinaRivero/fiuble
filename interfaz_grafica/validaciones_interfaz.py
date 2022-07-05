@@ -1,7 +1,9 @@
+import sys
+sys.path.append("..")
 from tkinter import messagebox
 from cargar_datos import cargar_datos_usuarios
-#importar archivo main para correr luego de validar usuarios
-#rom logica_principal.main import main
+from main import main
+
 
 def validar_clave(clave):
     letras_con_acentos = ["á","é","í","ó","ú"]

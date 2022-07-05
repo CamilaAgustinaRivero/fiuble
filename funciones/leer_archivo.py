@@ -38,7 +38,7 @@ Salidas:
 """
 
 def unificar_archivos(LONGITUD_PALABRA):
-    with open("archivos/Cuentos.txt", "r") as archivo_entrada1, open("archivos/La araña negra - tomo 1.txt", "r") as archivo_entrada2, open("archivos/Las 1000 Noches y 1 Noche.txt", "r") as archivo_entrada3, open("archivos/palabras.csv", "w") as archivo_salida:
+    with open("archivos/Cuentos.txt", "r", encoding="utf-8") as archivo_entrada1, open("archivos/La araña negra - tomo 1.txt", "r", encoding="utf-8") as archivo_entrada2, open("archivos/Las 1000 Noches y 1 Noche.txt", "r", encoding="utf-8") as archivo_entrada3, open("archivos/palabras.csv", "w", encoding="utf-8") as archivo_salida:
         archivos = [archivo_entrada1, archivo_entrada2, archivo_entrada3]
         i = 0
         dic_desordenado = {}
