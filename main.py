@@ -14,7 +14,7 @@ from funciones.continuar_jugando import continuar_jugando
 from funciones.guardar_partidas import guardar_partidas
 
 
-def main():
+def main(modo_juego, usuario_1, usuario_2=""):
     # Condiciones iniciales del juego
     iniciar_partida = True
     establecer_configuraciones()
@@ -24,7 +24,7 @@ def main():
     LIMITE_INTENTOS = 5
     partida = 0
     tabla = {}
-    cola_turnos, PRIMERO, SEGUNDO, modo_juego = escoger_modo()
+    cola_turnos, PRIMERO, SEGUNDO = escoger_modo(modo_juego, usuario_1, usuario_2)
     aciertos_totales1 = aciertos_totales2 = 0
     intentos_totales1 = intentos_totales2 = 0
     diccionario = unificar_archivos(LONGITUD_PALABRA)
@@ -79,4 +79,4 @@ def main():
     if modo_juego == '2':
         guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[SEGUNDO], aciertos_totales2, intentos_totales2)
 
-main()
+#main()

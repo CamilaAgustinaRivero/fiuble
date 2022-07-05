@@ -4,7 +4,6 @@ from tkinter import messagebox
 from cargar_datos import cargar_datos_usuarios
 from main import main
 
-
 def validar_clave(clave):
     letras_con_acentos = ["á","é","í","ó","ú"]
     tiene_acento = tiene_mayus = tiene_minus = tiene_num = caracter_especial = caracter_dif = False
@@ -43,8 +42,7 @@ def verificar_ingreso_clave(usuario1, clave1, modo_juego, usuario2='', clave2=''
         if usuario1 in claves.keys():
             if claves[usuario1] == clave1:
                 messagebox.showinfo(title=None, message="Usuario y Clave Correctos (correr main fiuble)")
-                #Aqui debería de llamar al main() para correrlo
-                #main.main(modo_juego, usuario1)
+                main(modo_juego, usuario1)
             else:
                 messagebox.showerror(title=None, message="Algunos de los datos ingresados es Incorrecto")
         else:
@@ -53,8 +51,7 @@ def verificar_ingreso_clave(usuario1, clave1, modo_juego, usuario2='', clave2=''
         if usuario1 and usuario2 in claves.keys():
             if claves[usuario1] == clave1 and claves[usuario2] == clave2:
                 messagebox.showinfo(title=None, message="Usuarios y Claves Correctos (correr main fiuble)")
-                # Aqui deberia de llamar al main para correrlo
-                # main.main(modo_juego, usuario1, usuario2)
+                main(modo_juego, usuario1, usuario2)
             else:
                 messagebox.showerror(title=None, message="Algunos de los datos ingresados es Incorrecto (clave incorrecta)")
         else:

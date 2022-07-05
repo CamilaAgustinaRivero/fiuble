@@ -3,13 +3,13 @@ from validaciones_interfaz import verificar_ingreso_clave
 from form_registro import form_registro
 
 def casilla_usuario_y_clave(numero_usuario, fila, marco):
-    #Casilla usuario
+    # Casilla usuario
     mensaje_user = Label(marco, text=f"Usuario {numero_usuario}: ")
     mensaje_user.grid(row=fila, column=0, sticky= "e", padx=10, pady=10)
     entry_user = Entry(marco)
     entry_user.grid(row=fila, column=1, padx=10, pady=10)
     
-    #Casilla de clave
+    # Casilla de clave
     entry_pw = Entry(marco, show="*") 
     mensaje_pw = Label(marco, text="Clave: ")
     mensaje_pw.grid(row=fila+1, column=0, sticky= "e", padx=10, pady=10)
@@ -40,6 +40,6 @@ def ventana_login(modo_de_juego):
     
     botonRegistro=Button(marco, text="Registrarse", command=lambda:form_registro())
     botonRegistro.grid(row=6, column=1, padx=10, pady=10)
-     
+
     raiz.mainloop()
     
