@@ -31,6 +31,10 @@ def main(modo_juego, usuario_1, usuario_2=""):
     diccionario = unificar_archivos(LONGITUD_PALABRA)
     fecha = fecha_actual()
     tiempo_fin = 0
+    if configuracion["REINICIAR_ARCHIVO_PARTIDAS"][0]:
+        metodo = "w"
+    else:
+        metodo = "a"
 
     while iniciar_partida and partida < LIMITE_PARTIDAS:
         # Condiciones iniciales de cada partida
@@ -91,6 +95,6 @@ def main(modo_juego, usuario_1, usuario_2=""):
             iniciar_partida, cola_turnos = continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida)
     
     # Cuando se termina de jugar todas las partidas
-    guardar_partidas(fecha, tiempo_fin, cola_turnos[PRIMERO], aciertos_totales1, intentos_totales1)
+    guardar_partidas(fecha, tiempo_fin, cola_turnos[PRIMERO], aciertos_totales1, intentos_totales1, metodo)
     if modo_juego == '2':
-        guardar_partidas(fecha, tiempo_fin, cola_turnos[SEGUNDO], aciertos_totales2, intentos_totales2)
+        guardar_partidas(fecha, tiempo_fin, cola_turnos[SEGUNDO], aciertos_totales2, intentos_totales2, metodo)

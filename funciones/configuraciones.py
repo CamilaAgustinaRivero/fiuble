@@ -9,7 +9,7 @@ Salidas:
 
 def establecer_configuraciones():
     mensaje = "Opción incorrecta."
-    archivo = open("./configuracion.csv", "w")
+    archivo = open("../configuracion.csv", "w")
     longitud_palabra_secreta = input("Ingrese la longitud de la palabra (entre 3 y 18 caracteres): ")
     if longitud_palabra_secreta.isdecimal() and 3 <= int(longitud_palabra_secreta) <= 18:
         linea = "{},{}\n".format('LONGITUD_PALABRA_SECRETA', longitud_palabra_secreta)
@@ -56,14 +56,14 @@ def configuraciones():
     }
     try:
         tipo_configuracion = "VALOR CONFIGURADO CORRECTAMENTE"
-        archivo = open("./configuracion.csv", "r")
+        archivo = open("../configuracion.csv", "r")
         for linea in archivo:
             clave, valor = linea.strip("\n").split(",")
             if clave in configuracion:
                 if valor.isdecimal():
                     configuracion[clave] = (int(valor), tipo_configuracion)
                 else:
-                    configuracion[clave] = (valor, tipo_configuracion)
+                    configuracion[clave] = (eval(valor), tipo_configuracion)
         archivo.close()
     except FileNotFoundError:
         print(f"Error al procesar archivo de configuración.")
