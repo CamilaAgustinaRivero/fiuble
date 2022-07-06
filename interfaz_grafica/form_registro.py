@@ -1,6 +1,15 @@
 from tkinter import *
 from actualizar_datos import actualizar_datos_usuarios
 
+# Daniel, Gonzalez
+"""
+Función: form_registro()
+Parámetros:
+    no tiene
+Salidas:
+    No tiene salida, esta función se encarga de crear la ventana de interfaz para manejar 
+    el registro de informacion de usuarios
+"""
 
 def form_registro():
     raiz = Tk()
