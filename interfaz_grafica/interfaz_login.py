@@ -2,6 +2,15 @@ from tkinter import *
 from validaciones_interfaz import verificar_ingreso_clave
 from form_registro import form_registro
 
+# Daniel, Gonzalez
+"""
+Función: casilla_usuario_y_clave()
+Parámetros:
+    numero_usuario: variable que guarda el numero de usuario a enseñar por la interfaz
+    fila: refiere a la posición en la que se quiere colocar la casilla del usuario
+    marco: marco empaquetado de la interfaz
+Salidas:
+"""
 
 def casilla_usuario_y_clave(numero_usuario, fila, marco):
     # Casilla usuario
@@ -17,6 +26,14 @@ def casilla_usuario_y_clave(numero_usuario, fila, marco):
     entry_pw.grid(row=fila + 1, column=1, padx=10, pady=10)
     return entry_user, entry_pw
 
+# Daniel, Gonzalez
+"""
+Función: ventana_login()
+Parámetros:
+    modo_de_juego: opción escogida a jugar '1' para 1 jugador o '2' para 2 jugadores
+    raiz_main: raiz de la interfaz que permite manipularla luego de su uso
+Salidas:
+"""
 
 def ventana_login(modo_de_juego, raiz_main):
     raiz = Tk()

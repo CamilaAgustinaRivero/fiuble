@@ -1,6 +1,14 @@
 from tkinter import *
 from interfaz_login import ventana_login
 
+# Daniel, Gonzalez
+"""
+Función: main_interfaz
+Parámetros:
+    no tiene
+Salidas:
+    No tiene salida. Se encarga de crear la interfaz inicial del juego que permite escoger la modalidad a jugar
+"""
 
 def main_interfaz():
     raiz = Tk()

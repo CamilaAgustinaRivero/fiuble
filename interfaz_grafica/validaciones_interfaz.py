@@ -4,6 +4,14 @@ import sys
 sys.path.append("..")
 from main import main
 
+# Daniel, Gonzalez
+"""
+Función: validar_clave()
+Parámetros:
+    clave: clave introducida por el usuario
+Salidas:
+    Devuelve True o False luego de validar la clave
+"""
 
 def validar_clave(clave):
     letras_con_acentos = ["á", "é", "í", "ó", "ú"]
@@ -25,6 +33,15 @@ def validar_clave(clave):
         clave) <= 15 and tiene_num and tiene_mayus and tiene_minus and not tiene_acento and caracter_especial and not caracter_dif
     return clave_valida
 
+# Daniel, Gonzalez
+"""
+Función: validar_usuario()
+Parámetros:
+    usuario: Nombre de usuario ingresado
+Salidas:
+    Devuelve True o False dependiendo de la validación hecha sobre el nombre de usuario ingresado
+"""
+
 
 def validar_usuario(usuario):
     caracteres_alpha = [caracter.isalpha() for caracter in usuario]
@@ -40,6 +57,19 @@ def validar_usuario(usuario):
             "_" in usuario) and not caracter_invalido
     return usuario_valido
 
+# Daniel, Gonzalez
+"""
+Función: verificar_ingreso_clave()
+Parámetros:
+    usuario_1: Primer nombre de usuario ingresado
+    clave_1: Clave asociada al primer usuario ingresado
+    modo_juego: '1' para modo un jugador o '2' para modo 2 jugadores
+    raiz_main: raiz de main_interfaz
+    raiz_login: raiz de ventana_login
+    usuario_2: Segundo nombre de usuario ingresado o '' por defecto
+    clave_2: Clave asociada al segundo nombre de usuario ingresado
+Salidas:
+"""
 
 def verificar_ingreso_clave(usuario1, clave1, modo_juego, raiz_main, raiz_login, usuario2='', clave2=''):
     claves = cargar_datos_usuarios()
