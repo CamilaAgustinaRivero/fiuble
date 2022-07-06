@@ -68,7 +68,11 @@ def main(modo_juego, usuario_1, usuario_2=""):
         tabla, puntos = actualizar_puntaje(tabla, intentos, cola_turnos[0], cola_turnos[1])
         tiempo_fin = detener_cronometro()
         tiempo = tiempo_transcurrido(tiempo_inicio, tiempo_fin)
-        resultado(arriesgo, palabra_a_adivinar, modo_juego, tiempo)
+        acertado = resultado(arriesgo, palabra_a_adivinar, modo_juego, tiempo)
+        if acertado and cola_turnos[0]:
+            aciertos_totales1 += 1
+        else:
+            aciertos_totales2 += 1
         print(f"{cola_turnos[PRIMERO]}, obtuviste {puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[PRIMERO])} puntos en total.")
         if modo_juego == '2':
             print(f"{cola_turnos[SEGUNDO]}, obtuviste {-puntos} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total." if puntos != -100 else f"{cola_turnos[SEGUNDO]}, obtuviste {int(puntos/2)} puntos. Tenes acumulados {tabla.get(cola_turnos[SEGUNDO])} puntos en total.")
@@ -79,4 +83,5 @@ def main(modo_juego, usuario_1, usuario_2=""):
     # Cuando se termina de jugar todas las partidas
     guardar_partidas(fecha, tiempo_fin, cola_turnos[PRIMERO], aciertos_totales1, intentos_totales1)
     if modo_juego == '2':
+        guardar_partidas(fecha, tiempo_fin, cola_turnos[PRIMERO], aciertos_totales1, intentos_totales1)
         guardar_partidas(fecha, tiempo_fin, cola_turnos[SEGUNDO], aciertos_totales2, intentos_totales2)
