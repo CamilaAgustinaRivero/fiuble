@@ -1,9 +1,9 @@
 import random
-from utiles import obtener_color
+from utiles.utiles import obtener_color
 from funciones.configuraciones import establecer_configuraciones, configuraciones
 from funciones.escoger_modo import escoger_modo
 from funciones.leer_archivo import unificar_archivos
-from funciones.cronometro import iniciar_cronometro, detener_cronometro, tiempo_transcurrido
+from funciones.cronometro import fecha_actual, iniciar_cronometro, detener_cronometro, tiempo_transcurrido
 from funciones.actualizar_coincidencias import actualizar_coincidencias
 from funciones.normalizar_arriesgo import normalizar_palabra
 from funciones.validar_arriesgo import validar_arriesgo
@@ -28,7 +28,9 @@ def main(modo_juego, usuario_1, usuario_2=""):
     aciertos_totales1 = aciertos_totales2 = 0
     intentos_totales1 = intentos_totales2 = 0
     diccionario = unificar_archivos(LONGITUD_PALABRA)
-    
+    fecha = fecha_actual()
+    tiempo_fin = 0
+
     while iniciar_partida and partida < LIMITE_PARTIDAS:
         # Condiciones iniciales de cada partida
         palabra_a_adivinar = random.choice(list(diccionario)).upper()
@@ -75,6 +77,6 @@ def main(modo_juego, usuario_1, usuario_2=""):
             iniciar_partida, cola_turnos = continuar_jugando(modo_juego, cola_turnos, tabla, PRIMERO, iniciar_partida)
     
     # Cuando se termina de jugar todas las partidas
-    guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[PRIMERO], aciertos_totales1, intentos_totales1)
+    guardar_partidas(fecha, tiempo_fin, cola_turnos[PRIMERO], aciertos_totales1, intentos_totales1)
     if modo_juego == '2':
-        guardar_partidas(tiempo_inicio, tiempo_fin, cola_turnos[SEGUNDO], aciertos_totales2, intentos_totales2)
+        guardar_partidas(fecha, tiempo_fin, cola_turnos[SEGUNDO], aciertos_totales2, intentos_totales2)

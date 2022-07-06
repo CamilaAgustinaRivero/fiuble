@@ -1,6 +1,24 @@
-# Villafañez, German Dario
+# Villafañez, German Dario y Rivero, Camila Agustina
 from datetime import *
 import time
+
+"""
+Función: fecha_actual
+Parámetros:
+    No tiene parametros.
+Salidas:
+    Retorna la fecha en la que inició la partida.
+"""
+
+
+def fecha_actual():
+    fecha = datetime.now()
+    dia = fecha.day
+    mes = fecha.month
+    anio = fecha.year
+    fecha_formateada = str(dia) + "-" + str(mes) + "-" + str(anio)
+    return fecha_formateada
+
 
 """
 Función: iniciar_cronometro

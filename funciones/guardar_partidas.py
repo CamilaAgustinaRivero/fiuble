@@ -9,9 +9,9 @@ Salidas:
 
 def guardar_partidas(fecha_partida, hora_finalizacion, nombre_jugador, aciertos, intentos):
     try:
-        archivo = open("../archivos/partidas.csv", "a")
+        archivo = open("../archivos_generados/partidas.csv", "a")
     except FileNotFoundError:
-        archivo = open("../archivos/partidas.csv", "w")
+        archivo = open("../archivos_generados/partidas.csv", "w")
     linea = "{},{},{},{},{}\n".format(fecha_partida, hora_finalizacion, nombre_jugador, aciertos, intentos)
     archivo.write(linea)
     archivo.close()
