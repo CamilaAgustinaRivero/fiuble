@@ -70,8 +70,12 @@ def main(modo_juego, usuario_1, usuario_2=""):
         if modo_juego == '1':
             intentos_totales1 += intentos
         else:
-            intentos_totales1 += math.ceil(intentos/2)
-            intentos_totales2 += math.floor(intentos/2)
+            if cola_turnos[0] == usuario_1:
+                intentos_totales1 += math.ceil(intentos/2)
+                intentos_totales2 += math.floor(intentos/2)
+            else:
+                intentos_totales2 += math.ceil(intentos/2)
+                intentos_totales1 += math.floor(intentos/2)
         tiempo_fin = detener_cronometro()
         tiempo = tiempo_transcurrido(tiempo_inicio, tiempo_fin)
         acertado = resultado(arriesgo, palabra_a_adivinar, modo_juego, tiempo)
