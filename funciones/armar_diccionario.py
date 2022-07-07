@@ -1,11 +1,12 @@
-# Nombre, Apellido
+# Ditrani, Elías Nicolás
 """
 Función: armar_diccionario
 Parámetros:
-    lista:
-    dic_desordenado:
-    nro:
+    lista: lista con las palabras candidatas
+    dic_desordenado: diccionario donde se salvarán las palabras
+    nro: número de archivo que se esta leyendo
 Salidas:
+    dic_desordenado: regresa el diccionario actualizado con las nuevas palabras
 """
 
 
