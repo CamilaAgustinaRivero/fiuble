@@ -1,6 +1,7 @@
 from tkinter import messagebox
 from cargar_datos import cargar_datos_usuarios
 import sys
+
 sys.path.append("..")
 from main import main
 
@@ -12,6 +13,7 @@ Parámetros:
 Salidas:
     Devuelve True o False luego de validar la clave
 """
+
 
 def validar_clave(clave):
     letras_con_acentos = ["á", "é", "í", "ó", "ú"]
@@ -32,6 +34,7 @@ def validar_clave(clave):
     clave_valida = 8 <= len(
         clave) <= 15 and tiene_num and tiene_mayus and tiene_minus and not tiene_acento and caracter_especial and not caracter_dif
     return clave_valida
+
 
 # Daniel, Gonzalez
 """
@@ -57,6 +60,7 @@ def validar_usuario(usuario):
             "_" in usuario) and not caracter_invalido
     return usuario_valido
 
+
 # Daniel, Gonzalez
 """
 Función: verificar_ingreso_clave()
@@ -71,13 +75,15 @@ Parámetros:
 Salidas:
 """
 
+
 def verificar_ingreso_clave(usuario1, clave1, modo_juego, raiz_main, raiz_login, usuario2='', clave2=''):
     claves = cargar_datos_usuarios()
     if modo_juego == 1:
         if usuario1 in claves.keys():
             if claves[usuario1] == clave1:
                 messagebox.showinfo(title=None, message="Usuario y Clave Correctos (correr main fiuble)")
-                raiz_main.destroy(); raiz_login.destroy()
+                raiz_main.destroy();
+                raiz_login.destroy()
                 main(str(modo_juego), usuario1)
             else:
                 messagebox.showerror(title=None, message="Algunos de los datos ingresados es Incorrecto")
@@ -87,7 +93,8 @@ def verificar_ingreso_clave(usuario1, clave1, modo_juego, raiz_main, raiz_login,
         if usuario1 and usuario2 in claves.keys():
             if claves[usuario1] == clave1 and claves[usuario2] == clave2:
                 messagebox.showinfo(title=None, message="Usuarios y Claves Correctos (correr main fiuble)")
-                raiz_main.destroy(); raiz_login.destroy()
+                raiz_main.destroy();
+                raiz_login.destroy()
                 main(str(modo_juego), usuario1, usuario2)
             else:
                 messagebox.showerror(title=None,

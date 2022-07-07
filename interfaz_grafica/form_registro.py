@@ -11,6 +11,7 @@ Salidas:
     el registro de informacion de usuarios
 """
 
+
 def form_registro():
     raiz = Tk()
     raiz.title("Registro")

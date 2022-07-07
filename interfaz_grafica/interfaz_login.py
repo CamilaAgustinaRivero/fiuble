@@ -12,6 +12,7 @@ Parámetros:
 Salidas:
 """
 
+
 def casilla_usuario_y_clave(numero_usuario, fila, marco):
     # Casilla usuario
     mensaje_user = Label(marco, text=f"Usuario {numero_usuario}: ")
@@ -26,6 +27,7 @@ def casilla_usuario_y_clave(numero_usuario, fila, marco):
     entry_pw.grid(row=fila + 1, column=1, padx=10, pady=10)
     return entry_user, entry_pw
 
+
 # Daniel, Gonzalez
 """
 Función: ventana_login()
@@ -34,6 +36,7 @@ Parámetros:
     raiz_main: raiz de la interfaz que permite manipularla luego de su uso
 Salidas:
 """
+
 
 def ventana_login(modo_de_juego, raiz_main):
     raiz = Tk()
@@ -51,7 +54,8 @@ def ventana_login(modo_de_juego, raiz_main):
         entry_user2, entry_pw2 = casilla_usuario_y_clave(2, 2, marco)
         botonEnvio = Button(marco, text="Entrar",
                             command=lambda: verificar_ingreso_clave(entry_user1.get(), entry_pw1.get(), modo_de_juego,
-                                                                    raiz, raiz_main, entry_user2.get(), entry_pw2.get()))
+                                                                    raiz, raiz_main, entry_user2.get(),
+                                                                    entry_pw2.get()))
     else:
         entry_user1, entry_pw1 = casilla_usuario_y_clave(1, 0, marco)
         botonEnvio = Button(marco, text="Entrar",

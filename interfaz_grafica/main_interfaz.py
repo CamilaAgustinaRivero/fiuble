@@ -10,6 +10,7 @@ Salidas:
     No tiene salida. Se encarga de crear la interfaz inicial del juego que permite escoger la modalidad a jugar
 """
 
+
 def main_interfaz():
     raiz = Tk()
     raiz.title("Fiuble")
