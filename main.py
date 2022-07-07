@@ -39,7 +39,6 @@ def main(modo_juego, usuario_1, usuario_2=""):
     while iniciar_partida and partida < LIMITE_PARTIDAS:
         # Condiciones iniciales de cada partida
         palabra_a_adivinar = random.choice(list(diccionario)).upper()
-        print(palabra_a_adivinar)
         intentos = 0
         arriesgo = ""
         coincidencias = []

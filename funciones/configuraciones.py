@@ -1,9 +1,10 @@
 # Rivero, Camila Agustina
 """
-Función:
+Función: establecer_configuraciones
 Parámetros:
     Esta función no tiene parámetros.
 Salidas:
+    Crea un archivo con la configuración de cada partida.
 """
 
 

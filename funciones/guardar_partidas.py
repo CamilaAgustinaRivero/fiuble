@@ -1,9 +1,14 @@
 # Rivero, Camila Agustina
 """
 Parámetros:
-    Esta función no tiene parámetros.
+    fecha_partida: la fecha en la que inicio la partida.
+    hora_finalizacion: hora en la que termino la partida.
+    nombre_jugador: nombre del jugador actual.
+    aciertos: número que indica la cantidad de aciertos de cada jugador.
+    intentos: número que indica la cantidad de intentos de cada jugador.
+    metodo: string (puede ser a o w) que determina si la partida se sobreescribe o no.
 Salidas:
-    .
+    Crea un archivo con la información de cada partida.
 """
 
 
