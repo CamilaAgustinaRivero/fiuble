@@ -1,10 +1,9 @@
-# Nombre, Apellido
+# Ditrani, Elías Nicolás
 """
 Función: guardar
 Parámetros:
-    diccionario:
-    archivo:
-Salidas:
+    diccionario: diccionario con las palabras candidatas
+    archivo: archivo donde se guardarán las palabras y las veces que aparece en cada archivo
 """
 
 
